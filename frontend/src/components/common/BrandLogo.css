@@ -1,0 +1,21 @@
+.brand-logo {
+  display: block;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+.brand-logo--mark {
+  aspect-ratio: 1;
+  height: 100%;
+  width: 100%;
+}
+
+.brand-logo--wide {
+  aspect-ratio: 3.6 / 1;
+  width: min(260px, 100%);
+}
+
+.brand-logo--stacked {
+  aspect-ratio: 1;
+  width: min(180px, 100%);
+}
