@@ -865,11 +865,10 @@
 }
 
 .landing-appointment__panel {
-  background: linear-gradient(160deg, #e0d0f0, #c8e0d8);
   border-radius: 24px;
-  color: var(--text);
-  min-height: 520px;
-  padding: 46px;
+  box-shadow: 0 24px 60px rgba(35, 24, 47, 0.14);
+  min-height: 310px;
+  overflow: hidden;
 }
 
 .landing-appointment__panel h2 {

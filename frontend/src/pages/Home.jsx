@@ -307,12 +307,7 @@ const Home = () => {
 
         <section className="landing-section landing-appointment" id="appointment">
           <div className="landing-appointment__panel">
-            <Sparkles size={44} />
-            <h2>Your wellness journey starts here.</h2>
-            <p>Confidential, professional, compassionate therapy available Monday to Saturday.</p>
-            <span><Check size={15} /> Sessions in Amharic and English</span>
-            <span><Check size={15} /> Secure patient records</span>
-            <span><Check size={15} /> Licensed care team</span>
+            <img src="/images/photo-1653130892581-7c0ae1f4e8e0.png" alt="Wellness journey - professional mental health care" />
           </div>
 
           <form className="landing-form">
