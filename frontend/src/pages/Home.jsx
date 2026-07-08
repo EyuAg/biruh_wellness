@@ -284,24 +284,33 @@ const Home = () => {
           <a href="#appointment" className="landing-button landing-button--warm">Make an appointment</a>
         </section>
 
-        <section className="landing-section landing-services">
-          <div className="landing-service-grid">
-            {services.map(({ icon: Icon, title, text }) => (
-              <article className="landing-service" key={title}>
-                <span><Icon size={24} /></span>
-                <h3>{title}</h3>
-                <p>{text}</p>
-              </article>
-            ))}
-          </div>
-          <div className="landing-section__copy">
-            <p className="landing-eyebrow">Patient online services</p>
-            <h2>Manage your care from anywhere.</h2>
-            <p>
-              Book, review, and manage your full therapy journey in one secure place,
-              with therapist availability and appointment history always close at hand.
-            </p>
-            <Link to="/register" className="landing-button landing-button--primary">Create patient account</Link>
+        <section className="landing-section landing-services" aria-label="Patient online services">
+          <div className="landing-services-grid">
+            <div className="landing-services-cards">
+              {services.map(({ icon: Icon, title, text }) => (
+                <article className={`landing-service-card${title === 'Encrypted Records' ? ' landing-service-card--featured' : ''}`} key={title}>
+                  <span className="landing-service-icon"><Icon size={20} /></span>
+                  <h3>{title}</h3>
+                  <p>{text}</p>
+                </article>
+              ))}
+            </div>
+
+            <div className="landing-services-copy">
+              <p className="landing-eyebrow"><span className="landing-service-eyebrow-mark"></span>Patient online services</p>
+              <h2>Manage your care <em>from anywhere.</em></h2>
+              <p>
+                Book, review, and manage your full therapy journey in one secure place,
+                with therapist availability and appointment history always close at hand.
+              </p>
+              <div className="landing-cta-row">
+                <Link to="/register" className="landing-button landing-button--primary">Create patient account</Link>
+                <a href="#about" className="landing-link-secondary">
+                  See how it works
+                  <ArrowRight size={16} />
+                </a>
+              </div>
+            </div>
           </div>
         </section>
 
