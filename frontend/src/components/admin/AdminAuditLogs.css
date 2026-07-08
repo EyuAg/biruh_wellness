@@ -1,0 +1,173 @@
+.audit-shell {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.audit-toolbar {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.audit-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.audit-filter-chip {
+  align-items: center;
+  background: var(--admin-surface);
+  border: 1px solid var(--admin-line);
+  border-radius: 999px;
+  color: var(--admin-ink-soft);
+  display: inline-flex;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 10px 14px;
+}
+
+.audit-export {
+  align-items: center;
+  background: linear-gradient(155deg, var(--admin-plum), var(--admin-plum-deep));
+  border: 0;
+  border-radius: 11px;
+  color: #fff;
+  cursor: pointer;
+  display: inline-flex;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 800;
+  padding: 10px 16px;
+  box-shadow: var(--admin-shadow-sm);
+}
+
+.audit-export:hover {
+  filter: brightness(1.08);
+}
+
+.audit-card {
+  background: var(--admin-surface);
+  border: 1px solid var(--admin-line);
+  border-radius: 20px;
+  box-shadow: var(--admin-shadow-sm);
+  overflow: hidden;
+}
+
+.audit-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.audit-table thead th {
+  background: #fcfaf6;
+  border-bottom: 1px solid var(--admin-line);
+  color: var(--admin-ink-soft);
+  font-size: 11.5px;
+  font-weight: 900;
+  letter-spacing: 0.05em;
+  padding: 16px 22px;
+  text-align: left;
+  text-transform: uppercase;
+}
+
+.audit-table tbody td {
+  border-bottom: 1px solid var(--admin-line);
+  font-size: 14px;
+  padding: 15px 22px;
+  vertical-align: middle;
+}
+
+.audit-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.audit-table tbody tr:hover {
+  background: #fcfaf6;
+}
+
+.audit-user {
+  font-weight: 800;
+  color: var(--admin-ink);
+}
+
+.audit-muted {
+  color: var(--admin-ink-soft);
+  font-size: 13px;
+}
+
+.audit-badge {
+  border-radius: 999px;
+  display: inline-flex;
+  font-size: 11.5px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  padding: 5px 10px;
+  text-transform: uppercase;
+}
+
+.audit-badge.patient {
+  background: var(--admin-gold-soft);
+  color: #8a5a17;
+}
+
+.audit-badge.therapist {
+  background: var(--admin-teal-soft);
+  color: var(--admin-teal);
+}
+
+.audit-badge.admin {
+  background: #fbe7e5;
+  color: var(--admin-rose, #c4514b);
+}
+
+.audit-badge.receptionist {
+  background: #efe9f5;
+  color: var(--admin-plum);
+}
+
+.audit-badge.create {
+  background: var(--admin-teal-soft);
+  color: var(--admin-teal);
+}
+
+.audit-badge.update {
+  background: var(--admin-gold-soft);
+  color: #8a5a17;
+}
+
+.audit-badge.delete {
+  background: #fbe7e5;
+  color: var(--admin-rose, #c4514b);
+}
+
+.audit-badge.view {
+  background: #f2f2f2;
+  color: var(--admin-ink-soft);
+}
+
+.audit-footer {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 16px 22px;
+  flex-wrap: wrap;
+}
+
+.audit-state {
+  align-items: center;
+  background: var(--admin-surface);
+  border: 1px solid var(--admin-line);
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  min-height: 240px;
+  padding: 24px;
+  text-align: center;
+  color: var(--admin-ink-soft);
+}

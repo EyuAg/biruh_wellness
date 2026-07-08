@@ -19,6 +19,7 @@ import SessionNotes from './components/therapist/SessionNotes';
 import SessionNotesList from './components/therapist/SessionNotesList';
 import TherapistLeave from './components/therapist/TherapistLeave';
 import UserManagement from './components/admin/UserManagement';
+import AdminAuditLogs from './components/admin/AdminAuditLogs';
 
 // Components
 import PrivateRoute from './components/common/PrivateRoute';
@@ -105,6 +106,11 @@ function AppRoutes() {
           <Route path="/admin/users" element={
             <PrivateRoute allowedRoles={['admin']}>
               <UserManagement />
+            </PrivateRoute>
+          } />
+          <Route path="/admin/audit-logs" element={
+            <PrivateRoute allowedRoles={['admin']}>
+              <AdminAuditLogs />
             </PrivateRoute>
           } />
           

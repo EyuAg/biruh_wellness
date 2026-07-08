@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
-import { Bell, Home, LogOut, Users } from 'lucide-react';
+import { Bell, FileText, Home, LogOut, Users } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 import BrandLogo from '../common/BrandLogo';
 import './AdminShell.css';
@@ -8,6 +8,7 @@ import './AdminShell.css';
 const navItems = [
   { label: 'Home', to: '/admin/dashboard', icon: Home },
   { label: 'Users', to: '/admin/users', icon: Users },
+  { label: 'AuditLogs', to: '/admin/audit-logs', icon: FileText },
 ];
 
 const initials = (name) => {
