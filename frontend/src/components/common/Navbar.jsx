@@ -50,8 +50,8 @@ const Navbar = () => {
   return (
     <header className={`sticky top-0 z-40 border-b transition-all duration-300 ${
       isScrolled 
-        ? 'border-[#ede4f5] bg-white/95 backdrop-blur-2xl shadow-sm' 
-        : 'border-[#ede4f5]/30 bg-white/50 backdrop-blur-lg'
+        ? 'border-[#e8daf2] bg-white/85 backdrop-blur-2xl shadow-[0_8px_30px_rgba(61,31,82,0.08)]' 
+        : 'border-[#e8daf2]/70 bg-white/70 backdrop-blur-xl shadow-[0_4px_20px_rgba(61,31,82,0.05)]'
     }`}>
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
         <Link to="/" className="landing-brand" aria-label="Biruh Wellness home">
