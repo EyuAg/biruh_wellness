@@ -5,8 +5,9 @@
  * Patients are allowed any email.
  */
 
-const DEFAULT_THERAPIST_DOMAINS = ['biruh.org'];
-const DEFAULT_ADMIN_DOMAINS = ['admin.biruh'];
+const DEFAULT_THERAPIST_DOMAINS = ['biruhwellness.com'];
+const DEFAULT_ADMIN_DOMAINS = ['biruhwellness.org'];
+const BLOCKED_PATIENT_DOMAINS = ['biruhwellness.com', 'biruhwellness.org'];
 
 const rules = {
   therapist: {
@@ -36,11 +37,13 @@ function validateEmailForRole(email, role) {
   const r = rules[role];
   if (!r) return false;
 
-  // patients allowed any email
-  if (role === 'patient') return true;
-
   const domain = getDomainFromEmail(email);
   if (!domain) return false;
+
+  // patients can use any email except the restricted Biruh Wellness domains
+  if (role === 'patient') {
+    return !BLOCKED_PATIENT_DOMAINS.some((blockedDomain) => domain === blockedDomain || domain.endsWith(`.${blockedDomain}`));
+  }
 
   // allowedDomains may include suffixes like '.edu'
   for (const d of r.allowedDomains) {

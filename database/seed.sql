@@ -7,8 +7,7 @@
 -- 1. ADMIN USERS
 -- ============================================
 INSERT INTO users (name, email, password_hash, role, is_active) VALUES
-('John Smith', 'john.smith@biruhwellness.com', '$2b$12$QmZ7x3I5rC9vH5EaN8pDxOUB5m5l5L5F5L5g5h5i5j5k5l5m5n5o5p5q5r5s', 'admin', true),
-('Sarah Johnson', 'sarah.johnson@biruhwellness.com', '$2b$12$QmZ7x3I5rC9vH5EaN8pDxOUB5m5l5L5F5L5g5h5i5j5k5l5m5n5o5p5q5r5s', 'admin', true)
+('System Admin', 'admin@biruhwellness.org', '$2b$12$QmZ7x3I5rC9vH5EaN8pDxOUB5m5l5L5F5L5g5h5i5j5k5l5m5n5o5p5q5r5s', 'admin', true),
 ON CONFLICT (email) DO NOTHING;
 
 -- ============================================

@@ -14,9 +14,13 @@ const RegisterPage = () => {
   const validateEmailForRole = (email, role) => {
     if (!email || !email.includes('@')) return false;
     const domain = email.toLowerCase().split('@')[1] || '';
-    if (role === 'patient') return true;
-    if (role === 'therapist') return domain === 'biruh.org' || domain.endsWith('.biruh.org');
-    if (role === 'admin') return domain === 'admin.biruh' || domain.endsWith('.admin.biruh');
+    const blockedPatientDomains = ['biruhwellness.com', 'biruhwellness.org'];
+
+    if (role === 'patient') {
+      return !blockedPatientDomains.some((blockedDomain) => domain === blockedDomain || domain.endsWith(`.${blockedDomain}`));
+    }
+    if (role === 'therapist') return domain === 'biruhwellness.com';
+    if (role === 'admin') return domain === 'biruhwellness.org';
     return false;
   };
 
@@ -29,8 +33,10 @@ const RegisterPage = () => {
       newErrors.email = 'Enter a valid email address.';
     } else if (!validateEmailForRole(form.email, form.role)) {
       newErrors.email = form.role === 'therapist'
-        ? 'Therapist email must be @biruh.org.'
-        : 'Admin email must be @admin.biruh.';
+        ? 'Therapist email must be @biruhwellness.com.'
+        : form.role === 'admin'
+          ? 'Admin email must be @biruhwellness.org.'
+          : 'Patient email cannot use @biruhwellness.com or @biruhwellness.org.';
     }
     if (!form.phone || form.phone.trim().length < 10) {
       newErrors.phone = 'Phone number must be at least 10 digits.';
@@ -103,8 +109,9 @@ const RegisterPage = () => {
               <option value="admin">Admin</option>
             </select>
             <p className="mt-2 text-xs text-slate-500">
-              Therapist email must be <span className="font-semibold">@biruh.org</span>.<br />
-              Admin email must be <span className="font-semibold">@admin.biruh</span>.
+              Therapist email must be <span className="font-semibold">@biruhwellness.com</span>.<br />
+              Admin email must be <span className="font-semibold">@biruhwellness.org</span>.<br />
+              Patient email cannot use <span className="font-semibold">@biruhwellness.com</span> or <span className="font-semibold">@biruhwellness.org</span>.
             </p>
           </label>
 

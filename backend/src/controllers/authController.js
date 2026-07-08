@@ -23,20 +23,23 @@ const register = async (req, res) => {
             });
         }
 
+        const selectedRole = role === 'admin' || role === 'therapist' ? role : 'patient';
+
         const user = await User.create({
             email,
             password,
             full_name,
             phone,
-            role: 'patient',
+            role: selectedRole,
             ethiopian_id
         });
 
-        // Create patient profile
-        await Patient.create({
-            user_id: user.id,
-            preferred_language: 'amharic'
-        });
+        if (selectedRole === 'patient') {
+            await Patient.create({
+                user_id: user.id,
+                preferred_language: 'amharic'
+            });
+        }
 
         const accessToken = generateAccessToken(user);
         const refreshToken = generateRefreshToken(user);
