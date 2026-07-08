@@ -315,8 +315,15 @@ const Home = () => {
         </section>
 
         <section className="landing-section landing-appointment" id="appointment">
-          <div className="landing-appointment__panel">
-            <img src="/images/photo-1653130892581-7c0ae1f4e8e0.png" alt="Wellness journey - professional mental health care" />
+          <div className="landing-appointment__panel landing-appointment__image-panel">
+            <img
+              src="/images/peter-burdon-IAZu9DWb3Cc-unsplash.jpg"
+              alt="Wellness journey - professional mental health care"
+              onError={(e) => {
+                e.currentTarget.onerror = null;
+                e.currentTarget.src = '/images/appointment.png';
+              }}
+            />
           </div>
 
           <form className="landing-form">
