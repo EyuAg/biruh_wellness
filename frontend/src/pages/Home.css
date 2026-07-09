@@ -100,28 +100,41 @@
   padding: 8px 0;
   position: relative;
   text-decoration: none;
-  transition: color 0.2s ease;
+  transition: color 0.3s ease;
+  /* 🔒 Force NO background change */
+  background: transparent !important;
 }
+
 
 .landing-links a::after {
   background: var(--purple);
   border-radius: 999px;
-  bottom: 2px;
+  bottom: 0px;
   content: '';
-  height: 2px;
+  height: 1.5px;
   left: 0;
   position: absolute;
-  transform-origin: left;
+  transform-origin: center;
   transform: scaleX(0);
-  transition: transform 0.22s ease;
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   width: 100%;
 }
 
+.landing-links a:hover {
+  color: var(--purple);
+  background: transparent !important; 
+}
 
-
-.landing-links a:hover::after,
-.landing-links a:focus-visible::after {
+.landing-links a:hover::after {
   transform: scaleX(1);
+}
+
+
+.landing-links a:focus,
+.landing-links a:active,
+.landing-links a:focus-visible {
+  background: transparent !important;
+  outline: none;
 }
 
 .landing-nav__menu {
