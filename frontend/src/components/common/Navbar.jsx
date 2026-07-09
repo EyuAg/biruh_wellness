@@ -48,60 +48,90 @@ const Navbar = () => {
   };
 
   return (
-    <header className={`sticky top-0 z-40 border-b transition-all duration-300 ${
+    <header className={`navbar ${isLandingPage ? 'landing-navbar landing-nav' : 'internal-navbar'} ${!isLandingPage ? `sticky top-0 z-40 border-b transition-all duration-300 ${
       isScrolled 
         ? 'border-[#e8daf2] bg-white/85 backdrop-blur-2xl shadow-[0_8px_30px_rgba(61,31,82,0.08)]' 
         : 'border-[#e8daf2]/70 bg-white/70 backdrop-blur-xl shadow-[0_4px_20px_rgba(61,31,82,0.05)]'
-    }`}>
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
+    }` : ''}`}>
+      <div className={`mx-auto flex w-full items-center justify-between ${isLandingPage ? 'max-w-[1400px] px-8' : 'max-w-7xl px-4 py-3 sm:px-6 lg:px-8'}`}>
         <Link to="/" className="landing-brand" aria-label="Biruh Wellness home">
           <BrandLogo variant="wide"/>
         </Link>
 
-        {/* Mobile menu toggle */}
-        <button 
-          className="lg:hidden" 
-          type="button" 
-          onClick={() => setMenuOpen(!menuOpen)} 
-          aria-label="Toggle navigation"
-        >
-          {menuOpen ? <X size={20} /> : <Menu size={20} />}
-        </button>
+        {isLandingPage ? (
+          <>
+            <button
+              className="landing-menu"
+              type="button"
+              onClick={() => setMenuOpen(!menuOpen)}
+              aria-label="Toggle navigation"
+            >
+              {menuOpen ? <X size={20} /> : <Menu size={20} />}
+            </button>
 
-        {/* Navigation */}
-        <nav className={`${menuOpen ? 'absolute top-16 left-0 right-0 flex flex-col gap-3 bg-white border-b border-[#ede4f5] p-4' : 'hidden lg:flex'} lg:flex lg:items-center lg:gap-2 lg:text-sm text-sm`}>
-          {/* Main navigation - Services, Therapists, About, Contact */}
-          {createNavLink('Services', '#services')}
-          {createNavLink('Therapists', '#therapists')}
-          {createNavLink('About', '#about')}
-          {createNavLink('Contact', '#contact')}
+            <nav className={`landing-nav__menu ${menuOpen ? 'is-open' : ''}`}>
+              <ul className="landing-links">
+                <li>{createNavLink('Services', '#services')}</li>
+                <li>{createNavLink('Therapists', '#therapists')}</li>
+                <li>{createNavLink('About', '#about')}</li>
+                <li>{createNavLink('Contact', '#contact')}</li>
+              </ul>
 
-          {/* Authentication-based navigation */}
-          {isAuthenticated ? (
-            <>
-              <NavLink to="/dashboard" className="btn-ghost" onClick={() => setMenuOpen(false)}>
-                Dashboard
-              </NavLink>
-              <div className="flex min-h-10 items-center gap-2 rounded-lg bg-[#f5eefa] px-3 py-2 text-sm font-semibold text-[#7c3aad]">
-                <UserRound className="h-4 w-4 text-[#7c3aad]" />
-                <span className="max-w-[12rem] truncate">{user?.full_name || 'User'}</span>
+              <div className="landing-actions">
+                {isAuthenticated ? (
+                  <>
+                    <NavLink to="/dashboard" className="btn-ghost" onClick={() => setMenuOpen(false)}>
+                      Dashboard
+                    </NavLink>
+                    <button onClick={() => { logout(); setMenuOpen(false); }} className="btn-secondary">
+                      Logout
+                    </button>
+                  </>
+                ) : (
+                  <>
+                    <NavLink to="/login" className="btn-ghost" onClick={() => setMenuOpen(false)}>
+                      Login
+                    </NavLink>
+                    <NavLink to="/register" className="btn-primary" onClick={() => setMenuOpen(false)}>
+                      Register
+                    </NavLink>
+                  </>
+                )}
               </div>
-              <button onClick={() => { logout(); setMenuOpen(false); }} className="btn-secondary px-3">
-                <LogOut className="h-4 w-4" />
-                Logout
-              </button>
-            </>
-          ) : (
-            <>
-              <NavLink to="/login" className="btn-ghost" onClick={() => setMenuOpen(false)}>
-                Login
-              </NavLink>
-              <NavLink to="/register" className="btn-primary px-4" onClick={() => setMenuOpen(false)}>
-                Register
-              </NavLink>
-            </>
-          )}
-        </nav>
+            </nav>
+          </>
+        ) : (
+          <nav className={`${menuOpen ? 'absolute top-16 left-0 right-0 flex flex-col gap-3 bg-white border-b border-[#ede4f5] p-4' : 'hidden lg:flex'} lg:flex lg:items-center lg:gap-2 lg:text-sm text-sm`}>
+            {createNavLink('Services', '#services')}
+            {createNavLink('Therapists', '#therapists')}
+            {createNavLink('About', '#about')}
+            {createNavLink('Contact', '#contact')}
+            {isAuthenticated ? (
+              <>
+                <NavLink to="/dashboard" className="btn-ghost" onClick={() => setMenuOpen(false)}>
+                  Dashboard
+                </NavLink>
+                <div className="flex min-h-10 items-center gap-2 rounded-lg bg-[#f5eefa] px-3 py-2 text-sm font-semibold text-[#7c3aad]">
+                  <UserRound className="h-4 w-4 text-[#7c3aad]" />
+                  <span className="max-w-[12rem] truncate">{user?.full_name || 'User'}</span>
+                </div>
+                <button onClick={() => { logout(); setMenuOpen(false); }} className="btn-secondary px-3">
+                  <LogOut className="h-4 w-4" />
+                  Logout
+                </button>
+              </>
+            ) : (
+              <>
+                <NavLink to="/login" className="btn-ghost" onClick={() => setMenuOpen(false)}>
+                  Login
+                </NavLink>
+                <NavLink to="/register" className="btn-primary px-4" onClick={() => setMenuOpen(false)}>
+                  Register
+                </NavLink>
+              </>
+            )}
+          </nav>
+        )}
       </div>
     </header>
   );
