@@ -315,15 +315,13 @@ const Home = () => {
         </section>
 
         <section className="landing-section landing-appointment" id="appointment">
-          <div className="landing-appointment__panel landing-appointment__image-panel">
-            <img
-              src="/images/peter-burdon-IAZu9DWb3Cc-unsplash.jpg"
-              alt="Wellness journey - professional mental health care"
-              onError={(e) => {
-                e.currentTarget.onerror = null;
-                e.currentTarget.src = '/images/appointment.png';
-              }}
-            />
+          <div className="landing-appointment__panel">
+              <Sparkles size={44} />
+              <h2>Your wellness journey starts here.</h2>
+              <p>Confidential, professional, compassionate therapy available Monday to Saturday.</p>
+              <span><Check size={15} /> Sessions in Amharic and English</span>
+              <span><Check size={15} /> Secure patient records</span>
+              <span><Check size={15} /> Licensed care team</span>
           </div>
 
           <form className="landing-form">
